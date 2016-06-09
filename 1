@@ -1,1 +1,11 @@
-So I have a Raspberry Pi2, with OSMC and I'm trying to get a WS2801 led strip to work. When troubleshooting I have the need to attempt control of the leds, and I find this script which looks like it would allow me to do just that: https://github.com/scottjgibson/PixelPi.
+So I have a Raspberry Pi2, with OSMC and I'm trying to get a WS2801 led strip to work. When troubleshooting I have the need to attempt control of the leds, and I find this script which looks like it would allow me to do just that: https://github.com/scottjgibson/PixelPi. And all over the place there are references to installing RPi.GPIO to run python scripts controlling the Pi GPIO. But the osmc release doesn't seem to have RPi.GPIO installed by default, and when I attempt to install it, all I get is an error saying "command 'arm-linux-gnueabihf-gcc' failed". After a couple of feeble attempts to resolve it, I turn to google and after googling a while and almost giving up, I find this: https://discourse.osmc.tv/t/gpio-control-need-some-help/3246 with detailed instructions to get the build tools up and running. This was all that was needed:
+
+<pre>
+sudo apt-get update
+sudo apt-get install build-essential
+export ARCH=arm
+export CROSS_COMPILE=/usr/bin/
+</pre>
+
+And then <pre>sudo pip install RPi.GPIO</pre> and I'm on my way again...
+
