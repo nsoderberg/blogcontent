@@ -1,0 +1,7 @@
+20160804
+
+TL;DR: If your WS2801 is flickering, try adjusting the baud rate, in my case a baud rate of 115200 made the flickering disappear.
+
+After mounting my setup for ambient lightning, with the WS2801 led lights and the Raspberry Pi with OSMC and Hyperion, I noticed a very annoying flickering which hadn't been there earlier. After some googling I came to the conclusion it most probably was some kind of inteference, since the lights changed as expected when viewing videos. After some experimenting I noticed the flickering disappeared when I turned off the tv. I suppose that the reason it wasn't visible before mounting was that the led lights and the control circuit was further from the tv when I tested, now it is firmly taped right on the back of the tv.
+
+After some more googling I came upon discussions regarding baud rate. Without much hope I figured I had to try and change it. The default setting was 1000000, so I tried to change it to 900000, 700000 and 500000, without any difference. Then I saw someone mentioning that the Raspberry Pi had a native baud rate of 115200, so I thought I'd try that - and behold, the flickering disappeared completely. Now the lighting is totally stable and I'm happy with my new ambient lighting setup!
