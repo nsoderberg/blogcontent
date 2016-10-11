@@ -1,0 +1,9 @@
+Consumer networking card in Windows Server 2016
+
+I recently upgraded the motherboard in my home lab server to an Asus Z170 Pro Gaming. I wanted to try out the new Windows Server 2016. Boy was I surprised when I concluded that WS2016 didn't recognize the networking controller on the Asus board, an Intel I219-V. After some googling I wasn't the only one thinking "this sucks, it must be a stupid switch somewhere I can flip to make this work". Found a couple of good sources, amongst others these:
+
+http://nearlydeaf.com/?p=1145
+http://homeservershow.com/forums/index.php?/topic/4025-intel-82579v-nic-on-ga-z77x-ud5h-and-other-motherboards-with-server-oss/
+https://foxdeploy.com/2013/09/12/hacking-an-intel-network-card-to-work-on-server-2012-r2/
+
+After modifying the correct .inf-file according to the tips in the above articles, I got the drivers to install and the card works like a charm.
