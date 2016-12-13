@@ -1,0 +1,4 @@
+Using Ansible from Windows
+
+I've been looking to try out ansible, but since my main computer is running windows and it felt a bit overkill to install a virtual machine only to be able to orchestrate ansible commands, I decided to try using the linux subsystem for windows. I quickly found and article describing how to go about it (http://www.jeffgeerling.com/blog/2016/using-ansible-through-windows-10s-subsystem-linux), but something was still missing. When I attempted to run Ansible I got an error saying "ERROR! Unexpected Exception: No module named markupsafe". After some googling it became apparent that I was missing a module. A simple "pip install markupsafe" solved the problem, and I was on my way again.
+
