@@ -1,0 +1,18 @@
+Download tv episodes from svtplay
+
+Download the latest version of svtplay-dl (https://svtplay-dl.se/).
+Download the latest version of ffmpeg (https://www.gyan.dev/ffmpeg/builds/).
+Extract ffmpeg.exe and put at the same location as svtplay-dl.exe.
+
+Find the page for the series to download (ie https://www.svtplay.se/dips).
+Run something like this
+
+(Invoke-WebRequest -URI https://www.svtplay.se/dips).Links | Where-Object {$_.href -like "*?info=visa" } | Where-Object {$_.class -like "sc-3562e22f-17 iXtjqv" } | select href | foreach { .\svtplay-dl\svtplay-dl.exe -S ("https://svtplay.se" + $_.href) }
+
+The entire season should be downloaded episode by episode and the audio and video files should be merged automatically using ffmpeg. You will usually find the subtitles next to the video file as a srt file, which can be merged with the video using ffmpeg.
+
+To merge subtitles with the video file, use something like this
+
+Get-ChildItem -Filter *.mp4 | foreach { ..\svtplay-dl\ffmpeg.exe -i $_ -i ($_.Name -replace ".mp4", ".srt") -c copy -c:s mov_text -metadata:s:s:0 language=sv -metadata:s:s:0 title=Svenska ($_.Name + ".2.mp4") }
+
+And then rename your files as wanted and you're done.
